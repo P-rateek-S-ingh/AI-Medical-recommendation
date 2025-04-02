@@ -8,18 +8,29 @@ Clone the repository
 Project repo: https://github.com/P-rateek-S-ingh
 ```
 
-### STEP 01- Create a conda environment after openinig the repository
+### STEP 01- Create a vertiual environment after openinig the repository
 
 ```bash
-conda create -n medibot python=3.10 -y
+python venv myvenv
 
 ```
 
 ```bash
-conda activate medibot
+myvenv/Scritps/activate
 ```
 
 ### STEP 02- install the requriments
 ```bash
 pip install -r requirements.txt
+```
+
+
+### STEP 03-Move to the root directory 
+```bash
+cd AI-MEDICATION-RECOMMENDATION (OR WHATEVER YOUR ROOT DIRECTORY)
+```
+
+### STEP 04- run the flask code 
+```bash
+python app.py
 ```
