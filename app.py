@@ -1,7 +1,5 @@
 from flask import Flask, render_template, jsonify, request
 from src.helper import text_split, load_pdf_file, download_hugging_face_embeddings
-# from pinecone.grpc import PineconeGRPC as pinecone
-# from pinecone import ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -37,10 +35,19 @@ docsearch = PineconeVectorStore.from_existing_index(
 
 retriver = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
 
-llm = OpenAI(
-    base_url="https://api.ddc.xiolabs/xyz/v1",
+
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(
     api_key= DEEPSEEK_API_KEY,
-    temperature=0.4, max_tokens=500)
+    base_url="https://api.deepseek.com",
+    model="deepseek-chat",
+    temperature=0.4,
+    max_tokens=500
+)
+
+
+
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system", system_prompt),
@@ -69,4 +76,10 @@ def chat():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port= 8080, debug=True)
+    app.run(host="0.0.0.0", port= 8000, debug=True)
+
+
+
+
+
+
