@@ -1,0 +1,131 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('/static/images/RegisterPage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'PT Sans', sans-serif;
+  }
+  
+  /* Modal Content */
+  .modal-body {
+    display: flex;
+    padding: 0;
+    border-radius: 0rem;
+    background-color: #eae7d575;
+  }
+  
+  .modal-content {
+    border-radius: 4rem;
+    width: 90%; /* reduced from 140% */
+    max-width: 900px; /* prevent it from going too wide */
+    box-shadow: -1px -2px 42px -19px rgba(0, 0, 0, 0.74);
+  }
+  
+  .modal-content h1,
+  .modal-content h2,
+  .modal-content h3 {
+    text-align: center;
+  }
+  
+  .modal-content h1 {
+    font-size: 1.3em;
+    text-transform: uppercase;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.1em;
+  }
+  
+  .modal-content h3 {
+    font-size: 0.8em;
+    letter-spacing: 2px;
+  }
+  
+  form {
+    font-size: 0.8em;
+  }
+  
+  .column {
+    flex: 50%;
+    padding: 10px;
+  }
+  
+  .column#main {
+    flex: 75%;
+    padding: 40px;
+    margin-top: 30px;
+    margin-left: 15px;
+  }
+  
+  #secondary {
+    background-color: #F9BC35;
+    border-radius: 0 4rem 4rem 0;
+    text-align: center;
+  }
+  
+  #main .form-control {
+    border-radius: 0;
+    font-size: 0.9em;
+  }
+  
+  .btn {
+    text-transform: uppercase;
+    border-radius: 0.15rem;
+    width: 200px;
+    padding: 0.150rem 0.75rem;
+    margin: 30px auto;
+    font-family: 'PT Sans', sans-serif;
+    letter-spacing: 2px;
+  }
+  
+  .btn-primary {
+    border-color: rgba(255, 255, 255, 0);
+    background: linear-gradient(to right, #f1da36 0%, #2ded73 99%);
+    color: #000;
+  }
+  
+  .btn-primary:hover {
+    border-color: rgba(255, 255, 255, 0);
+  }
+  
+  #main .btn-primary {
+    width: 100%;
+  }
+  
+  #secondary .btn-primary {
+    background: #f8f9fa4f;
+    color: #000;
+  }
+  
+  .modal-body label {
+    margin-bottom: 0;
+  }
+  
+  .sec-content {
+    margin-top: 85%;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .modal-body {
+      flex-direction: column;
+    }
+  
+    .column#main,
+    #secondary {
+      width: 100%;
+      padding: 20px;
+      margin: 0;
+      border-radius: 0;
+    }
+  
+    .sec-content {
+      margin-top: 20px;
+    }
+  }
+  

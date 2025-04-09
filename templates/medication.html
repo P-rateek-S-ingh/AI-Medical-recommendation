@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>medication</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <script>
+        async function sendMessage() {
+            let input = document.getElementById("chat-input");
+            let message = input.value.trim();
+            if (message === "") return;
+    
+            let chatBox = document.querySelector(".chat-box");
+    
+            // Add user message to chatbox
+            let userMessage = document.createElement("div");
+            userMessage.classList.add("chat-message", "user");
+            userMessage.textContent = message;
+            chatBox.appendChild(userMessage);
+    
+            // Add question to sidebar
+            let sidebar = document.querySelector(".sidebar ul");
+            let questionItem = document.createElement("li");
+            questionItem.textContent = message;
+            questionItem.onclick = () => userMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+            sidebar.appendChild(questionItem);
+    
+            input.value = "";
+    
+            // Show bot is typing indicator
+            let botTyping = document.createElement("div");
+            botTyping.classList.add("chat-message", "bot");
+            botTyping.textContent = "Thinking... 🤔";
+            chatBox.appendChild(botTyping);
+            chatBox.scrollTop = chatBox.scrollHeight;
+    
+            // Send request to backend
+            try {
+                let response = await fetch("/medication", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({ msg: message })
+                });
+    
+                let botReply = await response.text();
+    
+                // Remove typing indicator
+                chatBox.removeChild(botTyping);
+    
+                // Add bot response to chatbox
+                let botMessage = document.createElement("div");
+                botMessage.classList.add("chat-message", "bot");
+                botMessage.textContent = botReply;
+                chatBox.appendChild(botMessage);
+    
+                chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to latest message
+            } catch (error) {
+                console.error("Error fetching response:", error);
+            }
+        }
+    </script>
+    
+    
+    
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <h2>Questions</h2>
+            <ul>
+                <li class="empty-message">Your questions will appear here</li>
+            </ul>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-header">MEDICATION</div>
+            <div class="chat-box"></div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendMessage()">
+                <button onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
