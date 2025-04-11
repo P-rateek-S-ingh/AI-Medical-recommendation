@@ -71,11 +71,80 @@ html {
 .chat-header {
   background: #31aa60;
   color: white;
-  text-align: center;
-  padding: 15px;
+  padding: 15px 20px;
   font-size: 18px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
+
+.profile-button {
+  position: absolute;
+  right: 20px;
+  background-color: white;
+  color: #31aa60;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  z-index: 100;
+  min-width: 200px;
+}
+
+.profile-dropdown p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.profile-dropdown button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.profile-dropdown button:hover {
+  background-color: #c82333;
+}
+
+
+.chat-header .logout-button {
+  position: absolute;
+  right: 20px;
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chat-header .logout-button:hover {
+  background-color: #c82333;
+}
+
+
+
 
 .chat-box {
   flex-grow: 1;
