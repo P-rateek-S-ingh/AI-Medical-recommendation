@@ -11,12 +11,14 @@ Project repo: https://github.com/P-rateek-S-ingh
 ### STEP 01- Create a vertiual environment after openinig the repository
 
 ```bash
-python venv myvenv
+python venv venv  # for windows
+python3 -m venv venv # for linux or macOS
 
 ```
 
 ```bash
-myvenv/Scritps/activate
+venv/Scritps/activate # for windows
+source vevn/bin/activate  # for linux or macOS
 ```
 
 ### STEP 02- install the requriments
