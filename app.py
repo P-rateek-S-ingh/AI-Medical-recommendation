@@ -180,16 +180,25 @@ def medication():
         msg = request.form.get("msg")
         if not msg:
             return "No message received", 400
+    
         print("Received message:", msg)
+
+        #AI = response
         response = rag_chain.invoke({"input": msg})
-        return str(response["answer"])
+        raw_answer = response["answer"]
+    
+        # Convert Markdown to clean HTML
+        html_answer = markdown2.markdown(
+            raw_answer,
+            extras=["fenced-code-blocks", "tables", "break-on-newline"]
+        )
+
+        return html_answer
+        
     
     # Get user info from session
     name = session.get("name")
     email = session.get("email")
-
-    # html_response = markdown2.markdown(response)
-    
     return render_template("medication.html", name = name , email = email)
 
 
