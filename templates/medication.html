@@ -38,7 +38,11 @@
       // Typing indicator
       let botTyping = document.createElement("div");
       botTyping.classList.add("chat-message", "bot");
-      botTyping.textContent = "Thinking... 🤔";
+      botTyping.innerHTML = `
+        <div class="spinner-container">
+          <div class="spinner"></div> 
+          <span>Thinking... 🤔</span>         
+        </div>`;
       chatBox.appendChild(botTyping);
       chatBox.scrollTop = chatBox.scrollHeight;
   

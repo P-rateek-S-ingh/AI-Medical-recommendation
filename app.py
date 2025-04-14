@@ -150,7 +150,6 @@ def register():
 
 # Route for user to login
 @app.route('/login', methods = ["GET", "POST"])
-@limiter.limit("5 per 10 minutes")
 def login():
     if request.method == 'POST':
         email = request.form['email']
